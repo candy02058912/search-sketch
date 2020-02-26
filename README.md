@@ -4,6 +4,8 @@ Plugin inspired from search-eveywhere: https://github.com/MrPeak/sketch-search-e
 
 Adds multilang support for search.
 
+![preview search sketch](./preview.gif | width=600)
+
 ## Installation
 
 - [Download](../../releases/latest/download/search-sketch.sketchplugin.zip) the latest release of the plugin
