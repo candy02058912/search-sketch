@@ -32,5 +32,9 @@
     "fuse.js": "^3.4.6",
     "sketch-module-web-view": "^3.1.4"
   },
-  "author": "Candy Tsai <candy02058912@gmail.com>"
+  "author": "Candy Tsai <candy02058912@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/candy02058912/search-sketch.git"
+  }
 }
