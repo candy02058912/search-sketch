@@ -1,5 +1,6 @@
 {
   "name": "search-sketch",
+  "description": "Search in sketch with multilang support",
   "version": "0.1.0",
   "engines": {
     "sketch": ">=3.0"
