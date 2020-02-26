@@ -1,0 +1,21 @@
+{
+  "compatibleVersion": 3,
+  "bundleVersion": 1,
+  "commands": [
+    {
+      "name": "Search Sketch",
+      "identifier": "search-sketch.main",
+      "script": "./my-command.js",
+      "handlers": {
+        "run": "onRun",
+        "actions": {
+          "Shutdown": "onShutdown"
+        }
+      }
+    }
+  ],
+  "menu": {
+    "title": "Search Sketch",
+    "items": ["search-sketch.main"]
+  }
+}

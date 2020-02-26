@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Search Sketch</title>
+    <link rel="stylesheet" href="../vendor/normalize/normalize.min.css" />
+    <link rel="stylesheet" href="../vendor/milligram/milligram.min.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h6 class="note">
+        Beta test version and currently only supports TextLayer search.
+      </h6>
+      <input
+        id="query"
+        type="text"
+        placeholder="Text to search for (multi-lang supported)"
+      />
+      <div class="row">
+        <div class="column">
+          <button id="search" class="button">Search</button>
+          <!-- <button id="search-prev" class="button" style="display: none">
+            &lt;&lt;
+          </button> -->
+          <button id="search-next" class="button" style="display: none">
+            &gt;&gt;
+          </button>
+        </div>
+        <div class="column">
+          <div id="result" class="result" style="display: none">
+            <span id="counter">-</span> of <span id="results-length">-</span>
+          </div>
+        </div>
+      </div>
+      <footer class="caption">Made with ❤️ by Candy Tsai</footer>
+    </div>
+    <!-- notice the "../resources_" here. It's because webview.js will be compiled in a different folder with the prefix. -->
+    <script src="../resources_webview.js"></script>
+  </body>
+</html>
