@@ -1,4 +1,8 @@
-# search-sketch
+# Search Sketch
+
+Plugin inspired from search-eveywhere: https://github.com/MrPeak/sketch-search-everywhere
+
+Adds multilang support for search.
 
 ## Installation
 
@@ -63,10 +67,10 @@ To use the polyfills or the mocks for certain Node.js globals and modules use th
 Visit [the official documention](https://webpack.js.org/configuration/node/) for available options.
 
 ```js
-if(entry.isPluginCommand ){
+if (entry.isPluginCommand) {
   config.node = {
     setImmediate: false
-  }
+  };
 } else {
   config.node = false;
 }
