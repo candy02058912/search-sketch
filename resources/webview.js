@@ -44,3 +44,10 @@ window.saveResults = res => {
     document.getElementById("search-next").style.display = "initial";
   }
 };
+
+// load theme
+window.loadThemeInfo = theme => {
+  if (theme === "dark") {
+    document.querySelector("body").setAttribute("data-theme", "dark");
+  }
+};

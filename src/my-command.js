@@ -38,6 +38,9 @@ export default function() {
   // print a message when the page loads
   webContents.on("did-finish-load", () => {
     UI.message("UI loaded!");
+    webContents
+      .executeJavaScript(`loadThemeInfo("${UI.getTheme()}")`)
+      .catch(console.error);
   });
 
   // handler: log
