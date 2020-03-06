@@ -12,12 +12,11 @@ document.getElementById("search").addEventListener("click", () => {
   window.postMessage("search", query);
 });
 
-document.getElementById("query").addEventListener("keyup", e => {
-  if (e.key === "Enter") {
-    counter = 1;
-    const query = document.getElementById("query").value;
-    window.postMessage("search", query);
-  }
+document.getElementById("search-form").addEventListener("submit", e => {
+  e.preventDefault();
+  counter = 1;
+  const query = document.getElementById("query").value;
+  window.postMessage("search", query);
 });
 
 // call the plugin from the webview
