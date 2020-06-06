@@ -16,7 +16,26 @@ const selectResult = (document, id) => {
   document.centerOnLayer(layer);
 };
 
-export default function() {
+const checkTextLayer = (layer) => {
+  // TextLayer
+  if (layer.text) {
+    return true;
+  }
+  return false;
+};
+
+const searchLayers = (layer, textLayers) => {
+  if (checkTextLayer(layer)) {
+    textLayers.push(layer);
+  }
+  if (layer.layers && layer.layers.length) {
+    for (const layer of layer.layers) {
+      searchLayers(layer, textLayers);
+    }
+  }
+};
+
+export default function () {
   const options = {
     identifier: webviewIdentifier,
     width: 520,
@@ -54,17 +73,25 @@ export default function() {
   });
 
   // handler: log
-  webContents.on("log", query => {
+  webContents.on("log", (query) => {
     console.log("log: ", query);
   });
 
   // handler: search
-  webContents.on("search", query => {
+  webContents.on("search", ({ query, searchOptions }) => {
     UI.message("Searching for " + query);
+    console.log("@searchOptions", searchOptions);
     console.log(query, " searching");
     const document = sketch.Document.getSelectedDocument();
     const selectedPage = document.selectedPage;
     const layers = selectedPage.layers;
+    console.log(layers.length);
+    // browserWindow.setBounds({ height: 400 });
+
+    const textLayers = [];
+    for (const layer of layers) {
+      searchLayers(layer, textLayers);
+    }
     const options = {
       shouldSort: true,
       threshold: 0.8,
@@ -72,19 +99,26 @@ export default function() {
       distance: 100,
       maxPatternLength: 32,
       minMatchCharLength: 1,
-      keys: ["text"]
+      useExtendedSearch: true,
+      keys: ["text"],
     };
-    const fuse = new Fuse(layers, options);
-    const result = fuse.search(query);
-    selectResult(document, result[0].id);
-    const resultIds = result.map(res => res.id);
+    const fuse = new Fuse(textLayers, options);
+    let searchQuery = `'${query}`;
+    if (searchOptions.fuzzy) {
+      searchQuery = query;
+    }
+    const result = fuse.search(searchQuery);
+    console.log("@result", result);
+    selectResult(document, result[0].item.id);
+    const resultIds = result.map((res) => res.item.id);
+    console.log("@resultIds", resultIds);
     webContents
       .executeJavaScript(`saveResults(${JSON.stringify(resultIds)})`)
       .catch(console.error);
   });
 
   // handler: searchNext
-  webContents.on("searchNext", id => {
+  webContents.on("searchNext", (id) => {
     UI.message("Searching id " + id);
     const document = sketch.Document.getSelectedDocument();
     selectResult(document, id);
