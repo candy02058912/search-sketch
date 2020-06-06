@@ -21,12 +21,22 @@ export default function() {
     identifier: webviewIdentifier,
     width: 520,
     height: 150,
-    y: 300,
     show: false,
-    resizable: false
+    alwaysOnTop: true,
+    remembersWindowFrame: true,
+    title: "Search Sketch",
   };
 
   const browserWindow = new BrowserWindow(options);
+
+  // additional styling for BrowserWindow
+  browserWindow._panel.setBackgroundColor(
+    NSColor.colorWithRed_green_blue_alpha(255 / 255, 250 / 255, 240 / 255, 1)
+  );
+  browserWindow._panel.standardWindowButton(NSWindowZoomButton).setHidden(true);
+  browserWindow._panel
+    .standardWindowButton(NSWindowMiniaturizeButton)
+    .setHidden(true);
 
   // only show the window when the page has loaded to avoid a white flash
   browserWindow.once("ready-to-show", () => {

@@ -3,39 +3,69 @@
   <head>
     <meta charset="utf-8" />
     <title>Search Sketch</title>
-    <link rel="stylesheet" href="../vendor/normalize/normalize.min.css" />
-    <link rel="stylesheet" href="../vendor/milligram/milligram.min.css" />
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div class="container">
-      <h6 class="note">
+      <h6>
         Beta test version and currently only supports TextLayer search.
       </h6>
       <form id="search-form">
-        <input
-          id="query"
-          type="text"
-          placeholder="Text to search for (multi-lang supported)"
-        />
-      </form>
-      <div class="row">
-        <div class="column">
-          <button id="search" class="button">Search</button>
-          <!-- <button id="search-prev" class="button" style="display: none">
-            &lt;&lt;
-          </button> -->
-          <button id="search-next" class="button" style="display: none">
-            &gt;&gt;
-          </button>
-        </div>
-        <div class="column">
-          <div id="result" class="result" style="display: none">
-            <span id="counter">-</span> of <span id="results-length">-</span>
+        <div class="form-row">
+          <div class="col">
+            <input
+              id="query"
+              type="text"
+              class="form-control"
+              placeholder="Text to search for (multi-lang supported)"
+            />
           </div>
         </div>
-      </div>
-      <footer class="caption">Made with ❤️ by Candy Tsai</footer>
+        <div class="form-row mt-2">
+          <div class="col-auto">
+            <div class="custom-control custom-switch">
+              <input type="checkbox" class="custom-control-input" id="fuzzy" />
+              <label class="custom-control-label" for="fuzzy"
+                >Fuzzy Match</label
+              >
+            </div>
+          </div>
+          <div class="col-auto">
+            <button id="search" type="submit" class="btn btn-primary btn-sm">
+              Search
+            </button>
+          </div>
+          <div class="col-auto">
+            <button
+              id="search-prev"
+              type="button"
+              class="btn btn-primary btn-sm"
+              style="display: none;"
+            >
+              &lt;&lt;
+            </button>
+            <button
+              id="search-next"
+              type="button"
+              class="btn btn-primary btn-sm"
+              style="display: none;"
+            >
+              &gt;&gt;
+            </button>
+          </div>
+          <div class="col-auto">
+            <div id="result" style="display: none;">
+              <span id="counter">-</span> of <span id="results-length">-</span>
+            </div>
+          </div>
+        </div>
+      </form>
+      <footer>
+        <small>
+          Made with ❤️ by Candy Tsai
+        </small>
+      </footer>
     </div>
     <!-- notice the "../resources_" here. It's because webview.js will be compiled in a different folder with the prefix. -->
     <script src="../resources_webview.js"></script>
