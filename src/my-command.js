@@ -25,6 +25,7 @@ const checkTextLayer = (layer) => {
 };
 
 const searchLayers = (layer, textLayers) => {
+  console.log("overrides", layer.overrides);
   if (checkTextLayer(layer)) {
     textLayers.push(layer);
   }
@@ -86,7 +87,6 @@ export default function () {
     const selectedPage = document.selectedPage;
     const layers = selectedPage.layers;
     console.log(layers.length);
-    // browserWindow.setBounds({ height: 400 });
 
     const textLayers = [];
     for (const layer of layers) {
