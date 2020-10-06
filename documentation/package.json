@@ -16,6 +16,8 @@
   "dependencies": {
     "gatsby": "^2.24.66",
     "gatsby-plugin-react-helmet": "^3.3.12",
+    "gatsby-source-filesystem": "^2.3.32",
+    "gatsby-transformer-remark": "^2.8.38",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0"

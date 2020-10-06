@@ -5,7 +5,7 @@ export default function Layout({ children }) {
   return (
     <>
       <SEO title="Search Sketch" />
-      <div className="app text-light">{children}</div>
+      {children}
     </>
   )
 }
